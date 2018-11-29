@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    protected $table = 'ms_users';
+    protected $table = 'mtr_users';
 
     protected $fillable = [
         'name', 'email', 'password', 'phone', 'gender', 'address', 'profile_picture', 
