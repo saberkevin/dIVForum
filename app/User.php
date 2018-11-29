@@ -9,7 +9,7 @@ class User extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'ms_users';
+    protected $table = 'mtr_users';
 
     protected $fillable = [
         'name', 'email', 'password', 'phone', 'gender', 'address', 'profile_picture', 

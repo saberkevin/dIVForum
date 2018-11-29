@@ -9,7 +9,7 @@ class UserRole extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'tr_user_roles';
+    protected $table = 'trn_user_roles';
 
     public function users()
     {
