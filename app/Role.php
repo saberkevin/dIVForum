@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Role extends Model
 {
-    protected $table = 'mtr_roles';
+    use SoftDeletes;
+
+    protected $table = 'ms_roles';
 
     protected $fillable = [
         'name', 

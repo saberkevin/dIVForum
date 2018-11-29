@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('ms_users', function (Blueprint $table) {
+        Schema::create('mtr_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('profile_picture');
             $table->date('birthday');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
