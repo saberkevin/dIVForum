@@ -11,6 +11,20 @@
 |
 */
 
+//LANDING PAGE
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts/main-layout');     //To be replaced
 });
+
+//USER AUTHENTICATION
+Route::get('/login', function(){
+    return view('auth/login');
+})->name('login');
+
+Route::post('/login','Auth\LoginController@login');
+
+Route::get('/register', function(){
+    return view('auth/register');
+})->name('register');
+
+Route::post('/logout','Auth\LoginController@logout')->name('logout');
