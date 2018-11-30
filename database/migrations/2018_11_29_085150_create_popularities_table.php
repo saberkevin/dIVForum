@@ -30,6 +30,6 @@ class CreatePopularitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('popularities');
+        Schema::dropIfExists('trn_popularities');
     }
 }

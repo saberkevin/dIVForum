@@ -16,7 +16,7 @@ class CreateForumCategoriesTable extends Migration
         Schema::create('trn_forum_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('forum_id');
-            $table->integer('cateogry_id');
+            $table->integer('category_id');
             $table->timestamps('');
             $table->softDeletes();
         });
@@ -29,6 +29,6 @@ class CreateForumCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forum_categories');
+        Schema::dropIfExists('trn_forum_categories');
     }
 }

@@ -30,6 +30,6 @@ class CreateInboxesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inboxes');
+        Schema::dropIfExists('trn_inboxes');
     }
 }
