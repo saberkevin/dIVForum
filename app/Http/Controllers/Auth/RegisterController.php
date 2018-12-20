@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Rules\EndsWith;
+use App\Rules\OlderThan;
 use App\User;
 use App\Http\Controllers\Controller;
 use http\Env\Request;
@@ -13,7 +14,7 @@ class RegisterController extends Controller
 {
     protected function createUser(Request $data)
     {
-        $validator = Validator::make($data->all,
+        $validator = Validator::make($data->all(),
             [
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|unique:users',
@@ -23,7 +24,7 @@ class RegisterController extends Controller
                 'gender' => 'required|in:male,female',
                 'address' => ['required|string', new EndsWith('Street')],
                 'profile_pict' => 'required|mimes:jpeg,png,jpg',
-                'birthday' => 'required|date',
+                'birthday' => ['required|date', new OlderThan(12)],
                 'agree' => 'accepted'
             ]);
 
