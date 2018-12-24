@@ -12,19 +12,13 @@
 */
 
 //LANDING PAGE
-Route::get('/', function () {
-    return view('layouts/main-layout');     //To be replaced
-});
+Route::get('/', 'RoutesController@home');
 
 //USER AUTHENTICATION
-Route::get('/login', function(){
-    return view('auth/login');
-})->name('login');
-
+Route::get('/login', 'RoutesController@login')->name('login');
 Route::post('/login','Auth\LoginController@login');
-
-Route::get('/register', function(){
-    return view('auth/register');
-})->name('register');
-
+Route::get('/register', 'RoutesController@register')->name('register');
 Route::post('/logout','Auth\LoginController@logout')->name('logout');
+Route::post('/register/add', 'Auth\RegisterController@createUser')->name('registerUser');
+
+
