@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->string('profile_picture');
             $table->date('birthday');
-            $table->rememberToken();
+            $table->string('remember_token')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
