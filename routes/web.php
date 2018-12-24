@@ -12,9 +12,7 @@
 */
 
 //LANDING PAGE
-Route::get('/', function () {
-    return view('layouts/main-layout');     //To be replaced
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 //USER AUTHENTICATION
 Route::get('/login', function(){
@@ -28,3 +26,6 @@ Route::get('/register', function(){
 })->name('register');
 
 Route::post('/logout','Auth\LoginController@logout')->name('logout');
+
+//FORUM ROUTES
+Route::post('/','HomE')->name('search-forum');
