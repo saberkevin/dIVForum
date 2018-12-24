@@ -23,7 +23,7 @@
                         <div class="dropdown-content">
                             <a href="#">Master User</a>
                             <a href="#">Master Forum</a>
-                            <a href="#">Master Category</a>
+                            <a href="{{ route('master-category') }}">Master Category</a>
                         </div>
                     </div>
                     @endif
@@ -54,8 +54,6 @@
                             {{ csrf_field() }}
                         </form>
                     </li>
-
-
                 @endif
             </ul>
         </div>
