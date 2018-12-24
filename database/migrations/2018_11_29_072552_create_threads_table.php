@@ -15,8 +15,16 @@ class CreateThreadsTable extends Migration
     {
         Schema::create('trn_forum_threads', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('forum_id');
-            $table->integer('user_id');
+            $table->integer('forum_id')->unsigned();
+            $table->foreign('forum_id')
+                ->references('id')->on('mtr_forums')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')->on('mtr_users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->string('content');
             $table->timestamps();
             $table->softDeletes();

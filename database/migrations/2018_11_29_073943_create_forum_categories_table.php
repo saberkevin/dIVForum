@@ -15,8 +15,16 @@ class CreateForumCategoriesTable extends Migration
     {
         Schema::create('trn_forum_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('forum_id');
-            $table->integer('category_id');
+            $table->integer('forum_id')->unsigned();
+            $table->foreign('forum_id')
+                ->references('id')->on('mtr_forums')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')
+                ->references('id')->on('mtr_categories')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps('');
             $table->softDeletes();
         });

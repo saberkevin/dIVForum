@@ -12,7 +12,7 @@
 */
 
 //LANDING PAGE
-Route::get('/', 'RoutesController@home');
+Route::get('/', 'HomeController@index')->name('home');
 
 //USER AUTHENTICATION
 Route::get('/login', 'RoutesController@login')->name('login');
@@ -20,5 +20,7 @@ Route::post('/login','Auth\LoginController@login');
 Route::get('/register', 'RoutesController@register')->name('register');
 Route::post('/logout','Auth\LoginController@logout')->name('logout');
 Route::post('/register/add', 'Auth\RegisterController@createUser')->name('registerUser');
+Route::post('/logout','Auth\LoginController@logout')->name('logout');
 
-
+//FORUM ROUTES
+Route::post('/','HomeController@search')->name('search-forum');

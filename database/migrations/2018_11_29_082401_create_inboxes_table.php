@@ -15,8 +15,16 @@ class CreateInboxesTable extends Migration
     {
         Schema::create('trn_inboxes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('sender_id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')->on('mtr_users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->integer('sender_id')->unsigned();
+            $table->foreign('sender_id')
+                ->references('id')->on('mtr_users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->string('content');
             $table->timestamps();
             $table->softDeletes();

@@ -15,7 +15,11 @@ class CreatePopularitiesTable extends Migration
     {
         Schema::create('trn_popularities', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')->on('mtr_users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->integer('positive');
             $table->integer('negative');
             $table->timestamps();
