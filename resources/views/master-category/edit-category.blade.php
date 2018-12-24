@@ -1,5 +1,5 @@
 @extends('layouts.main-layout')
-@section('title', 'Master Category')
+@section('title', 'Edit Master Category')
 @section('content')
     <div class="container">
         <div class="row">
