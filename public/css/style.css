@@ -132,3 +132,24 @@
     bottom: 25px;
     right: 25px;
 }
+
+/*CATEGORY ICONS*/
+.edit-button{
+    padding: 2px;
+    font-size: 16px;
+    color: white;
+    background: orange;
+}
+
+.delete-button{
+    padding: 2px;
+    font-size: 16px;
+    color: white;
+    background: red;
+}
+
+.table-container{
+    width: 60vw;
+    margin-left: 20vw;
+    margin-right: 20vw;
+}

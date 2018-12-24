@@ -24,3 +24,10 @@ Route::post('/logout','Auth\LoginController@logout')->name('logout');
 
 //FORUM ROUTES
 Route::post('/','HomeController@search')->name('search-forum');
+
+//MASTER CATEGORY ROUTES
+Route::get('/master-category','CategoryController@index')->name('master-category');
+Route::get('/master-category/edit/{id}','CategoryController@editPage')->name('edit-master-category');
+Route::post('/master-category','CategoryController@insert')->name('add-category');
+Route::post('/master-category/edit/{id}','CategoryController@update')->name('update-category');
+Route::delete('/master-category/delete/{id}','CategoryController@delete')->name('delete-category');
