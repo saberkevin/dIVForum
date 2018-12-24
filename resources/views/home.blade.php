@@ -54,7 +54,7 @@
         @endif
         @if(Auth::check())
             <footer>
-                <a href="{{ route('login') }}"><i class="fa fa-plus-circle insert-button pull-right"></i></a>
+                <a href="#"><i class="fa fa-plus-circle insert-button pull-right"></i></a>
             </footer>
         @endif
     </div>
