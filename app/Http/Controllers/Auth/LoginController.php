@@ -40,16 +40,19 @@ class LoginController extends Controller
     }
 
     public function login(Request $request){
+
         $login_credentials = array(
             'email' => $request->email,
             'password' => $request->password
         );
 
-        if(Auth::attempt($login_credentials)){
+        $remember = $request->input('remember');
+
+        if(Auth::attempt($login_credentials,$remember)){
             return redirect($this->redirectTo);
         }
         else{
-            return redirect()->back()->withErrors('Invalid Login!');
+            return redirect()->back()->withErrors('Wrong Username or Password!');
         }
     }
 
