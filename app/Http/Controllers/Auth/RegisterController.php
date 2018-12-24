@@ -54,6 +54,6 @@ class RegisterController extends Controller
         $db->birthday = $data->birthday;
         $db->save();
 
-        return redirect()->to('/');
+        return redirect()->to('/login');
     }
 }
