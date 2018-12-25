@@ -7,11 +7,19 @@
     <link href="{{ asset('css/bootstrap-theme.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
+    <script type="text/javascript">
+        function showTime() {
+            var date = new Date();
+            document.getElementById('timeNow').innerHTML =  date.toLocaleString();
+        }
+        setInterval(showTime, 1000);
+    </script>
 </head>
-<body>
+<body onload="showTime()">
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
+                <br>
                 <a class="navbar-brand" href="{{ route('home') }}">dIV Forum</a>
                 <!-- Master Page Links -->
                 @if(Auth::check())
@@ -34,6 +42,10 @@
                     </ul>
                 @endif
             </div>
+            <div id="timeNow" class="nav navbar-nav navbar-right">
+
+            </div>
+            <br>
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if(!Auth::check())
