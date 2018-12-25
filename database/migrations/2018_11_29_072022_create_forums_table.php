@@ -15,9 +15,13 @@ class CreateForumsTable extends Migration
     {
         Schema::create('mtr_forums', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')->on('mtr_users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('status');
             $table->timestamps();
             $table->softDeletes();
