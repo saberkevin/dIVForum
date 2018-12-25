@@ -7,15 +7,18 @@
     <link href="{{ asset('css/bootstrap-theme.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
-    <script type="text/javascript">
-        function showTime() {
-            var date = new Date();
-            document.getElementById('timeNow').innerHTML =  date.toLocaleString();
+    <script>
+        function showDateTime() {
+            <?php $currentTime  = \Carbon\Carbon::now() ?>
+            var date = new Date('<?php echo $currentTime?>');
+            setInterval(function() {
+                date.setSeconds(date.getSeconds() + 1);
+                document.getElementById('timeNow').innerHTML =  (("0" + date.getDate()).slice(-2)) + "-" + (("0" + (date.getMonth()+1)).slice(-2)) + "-" + date.getFullYear() + " " + (("0" + date.getHours()).slice(-2)) + ":" + (("0" + date.getMinutes()).slice(-2)) + ":" + (("0" + date.getSeconds()).slice(-2));
+            }, 1000);
         }
-        setInterval(showTime, 1000);
     </script>
 </head>
-<body onload="showTime()">
+<body onload="showDateTime()">
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
