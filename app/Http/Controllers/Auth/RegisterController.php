@@ -2,21 +2,40 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Role;
 use App\Rules\EndsWith;
-use App\Rules\OlderThan;
 use App\User;
 use App\Http\Controllers\Controller;
+use App\UserRole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    protected function createUser(Request $data)
+
+    public function addEditPage($id = null)
+    {
+        $roles = Role::all();
+        $routeName = Route::currentRouteName();
+        return view('auth/register', compact('roles','routeName', 'id'));
+    }
+
+    protected function addUpdateUser(Request $data, $routeName, $id = null)
     {
         $data->flash();
+
+        if(!Auth::check())
+        {
+            $data->request->add(['role' => 2]);
+        }
+        else $data->request->add(['agreement' => 1]);
+
         $validator = Validator::make($data->all(),
             [
                 'name' => 'required|string|max:255',
+                'role' => 'required',
                 'email' => 'required|string|email|unique:mtr_users',
                 'password' => 'required|string|min:6|confirmed',
                 'password_confirmation' => 'required|string',
@@ -43,7 +62,10 @@ class RegisterController extends Controller
             $image->move($imagePath,$imageName);
         }
 
-        $db = new User();
+        $db = null;
+
+        if($routeName == 'register' || $routeName == 'addUser') $db = new User();
+        else if($routeName == 'updateUserPage') $db = User::find($id);
         $db->name  = $data->name;
         $db->email = $data->email;
         $db->password = bcrypt($data->password);
@@ -54,6 +76,17 @@ class RegisterController extends Controller
         $db->birthday = $data->birthday;
         $db->save();
 
-        return redirect()->to('/login');
+        $dbr = null;
+        if($routeName == 'register' || $routeName == 'addUser')
+        {
+            $dbr = new UserRole();
+            $dbr->user_id = $db->id;
+        }
+        else if($routeName == 'updateUserPage') $dbr = UserRole::where('user_id','=',$id)->first();
+        $dbr->role_id = $data->role;
+        $dbr->save();
+
+        if($routeName == 'addUser' || $routeName == 'updateUserPage') return redirect()->to(route('masterUser'));
+        return redirect()->to(route('login'));
     }
 }

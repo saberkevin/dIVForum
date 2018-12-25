@@ -15,11 +15,11 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 //USER AUTHENTICATION
-Route::get('/login', 'RoutesController@login')->name('login');
+Route::get('/login', 'RoutesController@loginPage')->name('login');
 Route::post('/login','Auth\LoginController@login');
-Route::get('/register', 'RoutesController@register')->name('register');
+Route::get('/register/', 'Auth\RegisterController@addEditPage')->name('register');
 Route::post('/logout','Auth\LoginController@logout')->name('logout');
-Route::post('/register/add', 'Auth\RegisterController@createUser')->name('registerUser');
+Route::post('/add-update-user/{routeName}/{id?}', 'Auth\RegisterController@addUpdateUser')->name('addUpdateUser');
 Route::post('/logout','Auth\LoginController@logout')->name('logout');
 
 //FORUM ROUTES
@@ -31,3 +31,8 @@ Route::get('/master-category/edit/{id}','CategoryController@editPage')->name('ed
 Route::post('/master-category','CategoryController@insert')->name('add-category');
 Route::post('/master-category/edit/{id}','CategoryController@update')->name('update-category');
 Route::delete('/master-category/delete/{id}','CategoryController@delete')->name('delete-category');
+
+//MASTER USER
+Route::get('/master-user/', 'UserController@masterUserPage')->name('masterUser');
+Route::get('/master-user/add', 'Auth\RegisterController@addEditPage')->name('addUser');
+Route::get('/master-user/update/{id?}','Auth\RegisterController@addEditPage')->name('updateUserPage');

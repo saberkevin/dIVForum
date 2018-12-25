@@ -5,10 +5,18 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">
+                    @if(Auth::check())
+                        @if(Auth::user()->roles->where('role_id', 1)->first())
+                            User Data
+                        @endif
+                        @else Register
+                    @endif
+
+                </div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('registerUser') }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" method="POST" action="{{ route('addUpdateUser', ['routeName' => $routeName, 'id' => $id]) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
@@ -24,6 +32,29 @@
                                 @endif
                             </div>
                         </div>
+
+                        @if(Auth::check())
+                            @if(Auth::user()->roles->where('role_id', 1)->first())
+                                <div class="form-group {{ $errors->has('role') ? ' has-error' : '' }}">
+                                    <label for="role" class="col-md-4 control-label">Role</label>
+
+                                    <div class="col-md-6">
+                                        <select name="role" id="role" class="form-control">
+                                            <option value="">Select Role</option>
+                                            @foreach($roles as $role)
+                                                <option value="{{$role->id}}">{{$role->name}}</option>
+                                             @endforeach
+                                        </select>
+
+                                        @if ($errors->has('role'))
+                                            <span class="help-block">
+                                            <strong>{{ $errors->first('role') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif
+                        @endif
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
@@ -138,6 +169,7 @@
                             </div>
                         </div>
 
+                        @if(!Auth::check())
                         <div class="form-group{{ $errors->has('agreement') ? ' has-error' : '' }}">
                             <label for="agreement" class="col-md-4 control-label">Agreement</label>
 
@@ -151,6 +183,7 @@
                                 @endif
                             </div>
                         </div>
+                        @endif
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-
 class RoutesController extends Controller
 {
     public function home()
@@ -11,14 +9,8 @@ class RoutesController extends Controller
         return view('layouts/main-layout');
     }
 
-    public function login()
+    public function loginPage()
     {
-        if(Auth::check()) return redirect('/');
         return view('auth/login');
-    }
-
-    public function register()
-    {
-        return view('auth/register');
     }
 }
