@@ -23,7 +23,9 @@ Route::post('/add-update-user/{routeName}/{id?}', 'Auth\RegisterController@addUp
 Route::post('/logout','Auth\LoginController@logout')->name('logout');
 
 //FORUM ROUTES
+Route::get('/insert','HomeController@insertPage')->name('home-insert-page');
 Route::post('/','HomeController@search')->name('search-forum');
+Route::post('/insert','HomeController@insert')->name('home-insert-forum');
 
 //MASTER CATEGORY ROUTES
 Route::get('/master-category','CategoryController@index')->name('master-category');

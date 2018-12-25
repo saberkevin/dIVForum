@@ -54,7 +54,7 @@
         @endif
         @if(Auth::check())
             <footer>
-                <a href="#"><i class="fa fa-plus-circle insert-button pull-right"></i></a>
+                <a href="{{ route('home-insert-page') }}"><i class="fa fa-plus-circle insert-button pull-right"></i></a>
             </footer>
         @endif
     </div>

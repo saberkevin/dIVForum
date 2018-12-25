@@ -15,7 +15,6 @@
                                 <label for="name" class="col-md-4 control-label">Name</label>
 
                                 <div class="col-md-6">
-                                    <input id="id" type="hidden" class="form-control" name="name" value="">
                                     <input id="name" type="text" class="form-control" name="name" value="">
 
                                     @if ($errors->has('name'))
