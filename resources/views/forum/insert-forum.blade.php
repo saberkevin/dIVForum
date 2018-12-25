@@ -30,7 +30,7 @@
 
                                 <div class="col-md-6">
                                     <select id="category" class="form-control" name="category">
-                                        <option value="0">Select Category</option>
+                                        <option value="">Select Category</option>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
