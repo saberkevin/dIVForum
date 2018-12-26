@@ -33,7 +33,7 @@
                         </button>
                         <div class="dropdown-content">
                             <a href="{{ route('masterUser') }}">Master User</a>
-                            <a href="#">Master Forum</a>
+                            <a href="{{ route('master-forum') }}">Master Forum</a>
                             <a href="{{ route('master-category') }}">Master Category</a>
                         </div>
                     </div>

@@ -29,17 +29,17 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="title">
-                                        {{ $data->forums->name }}
-                                        @if($data->forums->status == 'open')
+                                        {{ $data->forum->name }}
+                                        @if($data->forum->status == 'open')
                                             <span class="forum-open pull-right">Open</span>
-                                        @elseif($data->forums->status == 'closed')
+                                        @elseif($data->forum->status == 'closed')
                                             <span class="forum-closed pull-right">Closed</span>
                                         @endif
                                     </h4>
-                                    <p class="summary">Category: {{ $data->categories->name }}</p>
-                                    <p class="summary">Posted on: {{ $data->forums->created_at }}</p>
+                                    <p class="summary">Category: {{ $data->category->name }}</p>
+                                    <p class="summary">Posted on: {{ $data->forum->created_at }}</p>
                                     <br>
-                                    <p class="summary">{{ $data->forums->description }}</p>
+                                    <p class="summary">{{ $data->forum->description }}</p>
                                 </div>
                             </div>
                         </td>
