@@ -50,7 +50,10 @@
                                     <div class="media">
                                         <div class="media-body">
                                             <h4 class="title">
-                                                <a href="{{ route('profilePage', ['id' => $thread->user->id]) }}">{{ $thread->user->name }}</a>
+                                                @if(Auth::check())
+                                                    <a href="{{ route('profilePage', ['id' => $thread->user->id]) }}">{{ $thread->user->name }}</a>
+                                                @else {{ $thread->user->name }}
+                                                @endif
                                                 @if(Auth::check())
                                                     @if(Auth::user()->id == $thread->user->id)
                                                     <div>
