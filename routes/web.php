@@ -25,10 +25,16 @@ Route::post('/logout','Auth\LoginController@logout')->name('logout');
 //FORUM ROUTES
 Route::get('/insert','HomeController@insertPage')->name('home-insert-page');
 Route::get('/my-forum','ForumController@myForumPage')->name('my-forum');
+Route::get('/thread/{id}', 'ForumController@threadPage')->name('view-forum-thread');
+Route::get('/thread/edit/{id}/{thread_id}', 'ForumController@threadEditPage')->name('thread-edit-page');
 Route::get('/my-forum/edit-forum/{id}','ForumController@editPage')->name('forum-edit-page');
 Route::post('/','HomeController@search')->name('search-forum');
+Route::post('/thread/{id}', 'ForumController@searchThread')->name('search-forum-thread');
+Route::post('/thread/add/{id}', 'ForumController@addThread')->name('add-forum-thread');
+Route::post('/thread/edit/{id}/{thread_id}', 'ForumController@updateThread')->name('update-forum-thread');
 Route::post('/insert','HomeController@insert')->name('home-insert-forum');
 Route::post('/my-forum/edit-forum/{id}', 'ForumController@update')->name('update-forum');
+Route::delete('thread/delete/{thread_id}', 'ForumController@deleteThread')->name('delete-forum-thread');
 
 //MASTER FORUM ROUTES
 Route::get('/master-forum','ForumController@index')->name('master-forum');

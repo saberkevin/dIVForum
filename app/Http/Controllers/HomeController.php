@@ -20,11 +20,14 @@ class HomeController extends Controller
     public function search(Request $request){
         $search = $request->search;
         $datas = null;
+        $forums = null;
+        $categories = null;
         if($search != ''){
             $forums = Forum::where('name', 'LIKE', '%'.$search.'%')->get();
-            if($forums->count() != 0) {
-                $datas = ForumCategory::whereIn('forum_id', array_pluck($forums, 'id'))->paginate(5);
-            }
+            $categories = Category::where('name', 'LIKE', '%'.$search.'%')->get();
+            $datas = ForumCategory::whereIn('forum_id', array_pluck($forums, 'id'))
+                                    ->orWhereIn('category_id', array_pluck($categories, 'id'))
+                                    ->paginate(5);
         }
         else{
             $datas = ForumCategory::paginate(5);

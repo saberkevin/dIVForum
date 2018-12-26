@@ -6,7 +6,7 @@
             <div class="search-container">
                 <form action="{{ route('search-forum') }}" method="post">
                     {{csrf_field()}}
-                    <input type="text" placeholder="Search.." name="search">
+                    <input type="text" placeholder="Search Forum by Forum / Category Name" name="search">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>
@@ -29,7 +29,7 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="title">
-                                        {{ $data->forum->name }}
+                                        <a href="{{ route('view-forum-thread', ['id' => $data->id]) }}">{{ $data->forum->name }}</a>
                                         @if($data->forum->status == 'open')
                                             <span class="forum-open pull-right">Open</span>
                                         @elseif($data->forum->status == 'closed')

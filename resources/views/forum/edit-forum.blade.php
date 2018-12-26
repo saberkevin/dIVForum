@@ -1,5 +1,5 @@
 @extends('layouts.main-layout')
-@section('title', 'Add Forum')
+@section('title', 'Edit Forum')
 @section('content')
     <div class="container">
         <div class="row">

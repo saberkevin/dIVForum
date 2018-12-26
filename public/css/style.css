@@ -27,8 +27,12 @@
     display: inline-block;
 }
 
+.topnav .thread-container {
+    display: inline-block;
+}
+
 .topnav input[type=text] {
-    width: 50vw;
+    width: 73.25vw;
     padding: 6px;
     margin-top: 8px;
     font-size: 17px;
@@ -47,7 +51,23 @@
     cursor: pointer;
 }
 
+.topnav .thread-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #4286f4;
+    color: white;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
 .topnav .search-container button:hover {
+    background: #2c61b7;
+}
+
+.topnav .thread-container button:hover {
     background: #2c61b7;
 }
 
@@ -104,6 +124,19 @@
         margin: 0;
         padding: 14px;
     }
+
+    .topnav .thread-container {
+        float: none;
+    }
+    .topnav a, .topnav input[type=text], .topnav .thread-container button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+
     .topnav input[type=text] {
         border: 1px solid #ccc;
     }

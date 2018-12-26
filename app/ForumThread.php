@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Thread extends Model
+class ForumThread extends Model
 {
     use SoftDeletes;
 
@@ -15,12 +15,12 @@ class Thread extends Model
         'content',
     ];
 
-	public function forums()
+	public function forum()
 	{
 		return $this->belongsTo(Forum::class, 'forum_id', 'id');
 	}
 
-	public function users(){
+	public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
