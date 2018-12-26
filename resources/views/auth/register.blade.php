@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     @if(Auth::check())
-                        @if(Auth::user()->role->where('role_id', 1)->first())
+                        @if(Auth::user()->role->role_id == 1)
                             User Data
                         @endif
                         @else Register
@@ -34,7 +34,7 @@
                         </div>
 
                         @if(Auth::check())
-                            @if(Auth::user()->role->where('role_id', 1)->first() && $routeName!='profileEdit')
+                            @if(Auth::user()->role->role_id == 1 && $routeName!='profileEdit')
                                 <div class="form-group {{ $errors->has('role') ? ' has-error' : '' }}">
                                     <label for="role" class="col-md-4 control-label">Role</label>
 
