@@ -25,6 +25,11 @@ class User extends Authenticatable
         return $this->hasOne(UserRole::class);
     }
 
+    public function popularity()
+    {
+        return $this->hasOne(Popularity::class);
+    }
+
     public function  forums(){
         return $this->hasMany(Forum::class, 'user_id', 'id');
     }

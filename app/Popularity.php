@@ -9,7 +9,7 @@ class Popularity extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'trn_popularity';
+    protected $table = 'trn_popularities';
 
     protected $fillable = [
         'positive', 'negative',
