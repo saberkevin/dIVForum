@@ -38,3 +38,4 @@ Route::delete('/master-category/delete/{id}','CategoryController@delete')->name(
 Route::get('/master-user/', 'UserController@masterUserPage')->name('masterUser');
 Route::get('/master-user/add', 'Auth\RegisterController@addEditPage')->name('addUser');
 Route::get('/master-user/update/{id?}','Auth\RegisterController@addEditPage')->name('updateUserPage');
+Route::delete('/master-user/delete/{id}','Auth\RegisterController@deleteUser')->name('deleteUser');

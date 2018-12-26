@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     @if(Auth::check())
-                        @if(Auth::user()->roles->where('role_id', 1)->first())
+                        @if(Auth::user()->role->where('role_id', 1)->first())
                             User Data
                         @endif
                         @else Register
@@ -34,7 +34,7 @@
                         </div>
 
                         @if(Auth::check())
-                            @if(Auth::user()->roles->where('role_id', 1)->first())
+                            @if(Auth::user()->role->where('role_id', 1)->first())
                                 <div class="form-group {{ $errors->has('role') ? ' has-error' : '' }}">
                                     <label for="role" class="col-md-4 control-label">Role</label>
 
@@ -116,8 +116,8 @@
                             <label for="phone" class="col-md-4 control-label">Gender</label>
 
                             <div class="col-md-6">
-                                <input id="male" type="radio" name="gender" value="male"> Male
-                                <input id="female" type="radio" name="gender" value="female"> Female
+                                <input id="male" type="radio" name="gender" value="Male"> Male
+                                <input id="female" type="radio" name="gender" value="Female"> Female
 
                                 @if ($errors->has('gender'))
                                     <span class="help-block">

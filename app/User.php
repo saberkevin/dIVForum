@@ -20,9 +20,9 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function roles()
+    public function role()
     {
-        return $this->hasMany(UserRole::class, 'user_id', 'id');
+        return $this->hasOne(UserRole::class);
     }
 
     public function  forums(){

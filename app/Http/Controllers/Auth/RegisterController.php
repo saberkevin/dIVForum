@@ -89,4 +89,11 @@ class RegisterController extends Controller
         if($routeName == 'addUser' || $routeName == 'updateUserPage') return redirect()->to(route('masterUser'));
         return redirect()->to(route('login'));
     }
+
+    public function deleteUser($id){
+        $data = User::find($id);
+        $data->delete();
+
+        return redirect()->to(route('masterUser'));
+    }
 }

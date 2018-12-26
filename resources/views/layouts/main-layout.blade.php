@@ -9,8 +9,8 @@
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
     <script>
         function showDateTime() {
-            <?php $currentTime  = \Carbon\Carbon::now() ?>
-            var date = new Date('<?php echo $currentTime?>');
+            @php $currentTime  = \Carbon\Carbon::now() @endphp
+            var date = new Date('@php echo $currentTime @endphp');
             setInterval(function() {
                 date.setSeconds(date.getSeconds() + 1);
                 document.getElementById('timeNow').innerHTML =  (("0" + date.getDate()).slice(-2)) + "-" + (("0" + (date.getMonth()+1)).slice(-2)) + "-" + date.getFullYear() + " " + (("0" + date.getHours()).slice(-2)) + ":" + (("0" + date.getMinutes()).slice(-2)) + ":" + (("0" + date.getSeconds()).slice(-2));
@@ -26,13 +26,13 @@
                 <a class="navbar-brand" href="{{ route('home') }}">dIV Forum</a>
                 <!-- Master Page Links -->
                 @if(Auth::check())
-                    @if(Auth::user()->roles->where('role_id', 1)->first())
+                    @if(Auth::user()->role->where('role_id', 1)->first())
                     <div class="dropdown">
                         <button class="dropbtn navbar-text">Master
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-content">
-                            <a href="#">Master User</a>
+                            <a href="{{ route('masterUser') }}">Master User</a>
                             <a href="#">Master Forum</a>
                             <a href="{{ route('master-category') }}">Master Category</a>
                         </div>

@@ -11,13 +11,13 @@ class UserRole extends Model
 
     protected $table = 'trn_user_roles';
 
-    public function users()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
-    public function roles()
+    public function role()
     {
-        return $this->belongsTo(Role::class, 'role_id', 'id');
+        return $this->belongsTo(Role::class);
     }
 }
