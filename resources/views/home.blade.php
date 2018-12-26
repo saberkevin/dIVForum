@@ -37,7 +37,7 @@
                                         @endif
                                     </h4>
                                     <p class="summary">Category: {{ $data->category->name }}</p>
-                                    <p class="summary">Posted on: {{ $data->forum->created_at }}</p>
+                                    <p class="summary">Posted on: {{ $data->forum->created_at->format('d-M-Y h:i:s') }}</p>
                                     <br>
                                     <p class="summary">{{ $data->forum->description }}</p>
                                 </div>
