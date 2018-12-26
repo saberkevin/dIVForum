@@ -40,7 +40,7 @@
                     @endif
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="#" class="nav navbar-nav">My Forum</a>
+                            <a href="{{ route('my-forum') }}" class="nav navbar-nav">My Forum</a>
                         </li>
                     </ul>
                 @endif

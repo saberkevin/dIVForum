@@ -24,8 +24,11 @@ Route::post('/logout','Auth\LoginController@logout')->name('logout');
 
 //FORUM ROUTES
 Route::get('/insert','HomeController@insertPage')->name('home-insert-page');
+Route::get('/my-forum','ForumController@myForumPage')->name('my-forum');
+Route::get('/my-forum/edit-forum/{id}','ForumController@editPage')->name('forum-edit-page');
 Route::post('/','HomeController@search')->name('search-forum');
 Route::post('/insert','HomeController@insert')->name('home-insert-forum');
+Route::post('/my-forum/edit-forum/{id}', 'ForumController@update')->name('update-forum');
 
 //MASTER FORUM ROUTES
 Route::get('/master-forum','ForumController@index')->name('master-forum');

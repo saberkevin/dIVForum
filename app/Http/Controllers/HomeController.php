@@ -23,7 +23,7 @@ class HomeController extends Controller
         if($search != ''){
             $forums = Forum::where('name', 'LIKE', '%'.$search.'%')->get();
             if($forums->count() != 0) {
-                $datas = ForumCategory::where('forum_id', array_pluck($forums, 'id'))->paginate(5);
+                $datas = ForumCategory::whereIn('forum_id', array_pluck($forums, 'id'))->paginate(5);
             }
         }
         else{
