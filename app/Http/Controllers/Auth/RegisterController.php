@@ -43,7 +43,7 @@ class RegisterController extends Controller
             [
                 'name' => 'required|string|max:255',
                 'role' => 'required',
-                'email' => 'required|string|email|unique:mtr_users',
+                'email' => 'required|string|email|unique:mtr_users,email,'.$id,
                 'password' => 'required|string|min:6|confirmed',
                 'password_confirmation' => 'required|string',
                 'phone' => 'required|numeric',
@@ -104,14 +104,21 @@ class RegisterController extends Controller
             $dbp->save();
         }
 
+        if($routeName != 'profileEdit' && Auth::user()->role->role_id == 2) return redirect()->to(route('home'));
         if($routeName == 'addUser' || $routeName == 'updateUserPage') return redirect()->to(route('masterUser'));
         if($routeName == 'profileEdit') return redirect()->to(route('profilePage', $id));
+
         return redirect()->to(route('login'));
     }
 
     public function deleteUser($id){
         $data = User::find($id);
         $data->delete();
+
+        if(!Auth::check())
+        {
+            return redirect()->to(route('home'));
+        }
 
         return redirect()->to(route('masterUser'));
     }
