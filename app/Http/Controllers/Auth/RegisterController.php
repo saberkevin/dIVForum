@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Popularity;
 use App\Role;
 use App\Rules\EndsWith;
 use App\User;
@@ -30,7 +31,13 @@ class RegisterController extends Controller
         {
             $data->request->add(['role' => 2]);
         }
+        else if(Auth::check() && $routeName == 'profileEdit')
+        {
+            $data->request->add(['role' => Auth::user()->role->role_id]);
+            $data->request->add(['agreement' => 1]);
+        }
         else $data->request->add(['agreement' => 1]);
+
 
         $validator = Validator::make($data->all(),
             [
@@ -65,7 +72,7 @@ class RegisterController extends Controller
         $db = null;
 
         if($routeName == 'register' || $routeName == 'addUser') $db = new User();
-        else if($routeName == 'updateUserPage') $db = User::find($id);
+        else if($routeName == 'updateUserPage' || $routeName == 'profileEdit') $db = User::find($id);
         $db->name  = $data->name;
         $db->email = $data->email;
         $db->password = bcrypt($data->password);
@@ -82,11 +89,23 @@ class RegisterController extends Controller
             $dbr = new UserRole();
             $dbr->user_id = $db->id;
         }
-        else if($routeName == 'updateUserPage') $dbr = UserRole::where('user_id','=',$id)->first();
+        else if($routeName == 'updateUserPage' || $routeName == 'profileEdit') $dbr = UserRole::where('user_id','=',$id)->first();
         $dbr->role_id = $data->role;
         $dbr->save();
 
+        $dbp = null;
+
+        if($routeName == 'register' || $routeName == 'addUser')
+        {
+            $dbp = new Popularity();
+            $dbp->user_id = $db->id;
+            $dbp->positive = 0;
+            $dbp->negative = 0;
+            $dbp->save();
+        }
+
         if($routeName == 'addUser' || $routeName == 'updateUserPage') return redirect()->to(route('masterUser'));
+        if($routeName == 'profileEdit') return redirect()->to(route('profilePage', $id));
         return redirect()->to(route('login'));
     }
 

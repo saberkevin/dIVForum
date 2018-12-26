@@ -109,6 +109,18 @@
     }
 }
 
+.userImg
+{
+    width: 20px;
+    height: 20px;
+}
+
+.borderless tr td {
+    border: none !important;
+    padding: 0px !important;
+    height: 30px;
+}
+
 /*FORUM STATUS*/
 .forum-open{
     padding: 3px;
@@ -169,4 +181,28 @@
 .buttonAddUser
 {
     margin-bottom: 10px;
+}
+
+/*Profile Page*/
+.profileUserImg
+{
+    width: 150px;
+    height: 200px;
+    margin-top: 30px;
+}
+
+.profile_spacing
+{
+    padding-right: 100px;
+    padding-bottom: 50px;
+}
+
+.rightPopularity
+{
+    margin-right: 30px;
+}
+
+.sendMessageTop
+{
+    margin-top: 10px;
 }

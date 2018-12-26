@@ -56,7 +56,10 @@
                 <li><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <li>
-                        <a href="#" class="nav navbar-nav">{{ Auth::user()->name }}</a>
+                        <a href="{{ route('profilePage', ['id' => Auth::user()->id]) }}" class="nav navbar-nav">
+                            <img src="/profile_picture/{{Auth::user()->profile_picture}}" alt="" class="img-circle userImg">
+                            {{ Auth::user()->name }}
+                        </a>
                     </li>
 
                     <li>

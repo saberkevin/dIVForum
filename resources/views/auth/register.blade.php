@@ -34,7 +34,7 @@
                         </div>
 
                         @if(Auth::check())
-                            @if(Auth::user()->role->where('role_id', 1)->first())
+                            @if(Auth::user()->role->where('role_id', 1)->first() && $routeName!='profileEdit')
                                 <div class="form-group {{ $errors->has('role') ? ' has-error' : '' }}">
                                     <label for="role" class="col-md-4 control-label">Role</label>
 
@@ -184,11 +184,13 @@
                             </div>
                         </div>
                         @endif
-
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    @if($routeName == 'register') Register
+                                    @elseif($routeName == 'addUser') Add
+                                    @elseif($routeName == 'updateUserPage' || 'profileEdit') Update
+                                    @endif
                                 </button>
                             </div>
                         </div>
