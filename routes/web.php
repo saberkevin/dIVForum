@@ -27,6 +27,11 @@ Route::get('/insert','HomeController@insertPage')->name('home-insert-page');
 Route::post('/','HomeController@search')->name('search-forum');
 Route::post('/insert','HomeController@insert')->name('home-insert-forum');
 
+//MASTER FORUM ROUTES
+Route::get('/master-forum','ForumController@index')->name('master-forum');
+Route::post('/master-forum/close/{id}','ForumController@close')->name('close-forum');
+Route::delete('/master-forum/delete/{id}','ForumController@delete')->name('delete-forum');
+
 //MASTER CATEGORY ROUTES
 Route::get('/master-category','CategoryController@index')->name('master-category');
 Route::get('/master-category/edit/{id}','CategoryController@editPage')->name('edit-master-category');
