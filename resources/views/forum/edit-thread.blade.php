@@ -101,7 +101,7 @@
                 <div class="thread-container">
                     <form class="form-horizontal" action="{{ route('update-forum-thread', ['id' => $id, 'thread_id' => $thread_id]) }}" method="post">
                         {{csrf_field()}}
-                        <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
+                        <div class="form-group {{ $errors->has('thread_content') ? ' has-error' : '' }}">
                             <div class="col-md-6">
                                 <input id="thread_content" type="text" class="form-control" name="thread_content" placeholder="Enter content here..." value="{{ $edit->content }}">
 

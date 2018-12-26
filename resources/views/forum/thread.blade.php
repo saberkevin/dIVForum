@@ -51,28 +51,30 @@
                                         <div class="media-body">
                                             <h4 class="title">
                                                 <a href="{{ route('profilePage', ['id' => $thread->user->id]) }}">{{ $thread->user->name }}</a>
-                                                @if(Auth::user()->id == $thread->user->id)
-                                                <div>
-                                                    <div class="pull-right">
-                                                        <form method="post" action="{{ route('delete-forum-thread', ['id' => $thread->id]) }}">
-                                                            {{ csrf_field() }}
-                                                            {{ method_field('delete') }}
-                                                            <button type="submit" class="btn btn-danger btn-sm">
-                                                                <i class="fa fa-trash"></i>
-                                                                Delete
-                                                            </button>
-                                                        </form>
+                                                @if(Auth::check())
+                                                    @if(Auth::user()->id == $thread->user->id)
+                                                    <div>
+                                                        <div class="pull-right">
+                                                            <form method="post" action="{{ route('delete-forum-thread', ['id' => $thread->id]) }}">
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('delete') }}
+                                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                                    <i class="fa fa-trash"></i>
+                                                                    Delete
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                        <div class="pull-right">
+                                                            <form method="get" action="{{ route('thread-edit-page', ['id' => $id, 'thread_id' => $thread->id]) }}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-warning btn-sm">
+                                                                    <i class="fa fa-edit"></i>
+                                                                    Edit
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     </div>
-                                                    <div class="pull-right">
-                                                        <form method="get" action="{{ route('thread-edit-page', ['id' => $id, 'thread_id' => $thread->id]) }}">
-                                                            {{ csrf_field() }}
-                                                            <button type="submit" class="btn btn-warning btn-sm">
-                                                                <i class="fa fa-edit"></i>
-                                                                Edit
-                                                            </button>
-                                                        </form>
-                                                    </div>
-                                                </div>
+                                                    @endif
                                                 @endif
                                             </h4>
                                             <p class="summary">{{ $thread->user->role->role->name }}</p>
@@ -94,6 +96,7 @@
                 <p>This forum doesn’t have any thread</p>
             @endif
         </div>
+        @if(Auth::check())
         <div class="panel-body">
             <h4>Post New Thread</h4>
             <p>Content: </p>
@@ -101,7 +104,7 @@
                 <div class="thread-container">
                     <form class="form-horizontal" action="{{ route('add-forum-thread', ['id' => $id]) }}" method="post">
                         {{csrf_field()}}
-                        <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
+                        <div class="form-group {{ $errors->has('thread_content') ? ' has-error' : '' }}">
                             <div class="col-md-6">
                                 <input id="thread_content" type="text" class="form-control" name="thread_content" placeholder="Enter content here..." value="">
 
@@ -120,5 +123,6 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 @endsection

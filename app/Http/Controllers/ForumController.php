@@ -39,7 +39,7 @@ class ForumController extends Controller
         $threads = null;
         $threads = ForumThread::where('forum_id', $data->forum_id)->paginate(5);
         $edit = null;
-        $edit = ForumThread::find($id);
+        $edit = ForumThread::find($thread_id);
         return view('/forum/edit-thread', compact('data', 'threads', 'edit', 'search', 'id', 'thread_id'));
     }
 

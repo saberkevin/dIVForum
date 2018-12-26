@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Add Forum</div>
+                    <div class="panel-heading">Edit Forum</div>
 
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="{{ route('update-forum', ['id' => $data->forum->id]) }}" enctype="multipart/form-data">
