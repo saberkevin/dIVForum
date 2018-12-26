@@ -26,7 +26,7 @@
                 <a class="navbar-brand" href="{{ route('home') }}">dIV Forum</a>
                 <!-- Master Page Links -->
                 @if(Auth::check())
-                    @if(Auth::user()->role->where('role_id', 1)->first())
+                    @if(Auth::user()->role->role_id == 1)
                     <div class="dropdown">
                         <button class="dropbtn navbar-text">Master
                             <i class="fa fa-caret-down"></i>
