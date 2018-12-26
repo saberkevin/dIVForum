@@ -52,7 +52,7 @@ class LoginController extends Controller
             return redirect($this->redirectTo);
         }
         else{
-            return redirect()->back()->withErrors('Wrong Username or Password!');
+            return redirect()->back()->withErrors('Wrong Email or Password!');
         }
     }
 

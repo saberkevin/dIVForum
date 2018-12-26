@@ -61,7 +61,9 @@
                             {{ Auth::user()->name }}
                         </a>
                     </li>
-
+                    <li>
+                        <a href="{{ route('inboxPage',['id' => Auth::user()->id]) }}">Inbox</a>
+                    </li>
                     <li>
                         <a class="nav navbar-nav" href="{{ route('logout') }}"
                             onclick="event.preventDefault();

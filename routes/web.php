@@ -50,3 +50,5 @@ Route::get('/profile-page/{id}', 'ProfileController@profilePage')->name('profile
 Route::get('/profile-page/edit/{id?}', 'Auth\RegisterController@addEditPage')->name('profileEdit');
 Route::get('/profile-page/vote/{id}/{voteBoolean}', 'ProfileController@vote')->name('profileVote');
 Route::post('/profile-page/sendMessage/{id}', 'ProfileController@sendMessage')->name('sendMessage');
+Route::get('/inbox-page/{id}', 'InboxController@inboxPage')->name('inboxPage');
+Route::delete('/inbox-page/delete/{id}', 'InboxController@deleteMessage')->name('deleteMessage');
