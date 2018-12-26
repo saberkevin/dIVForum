@@ -35,45 +35,49 @@
                         </form>
                     </div>
                 </div>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                        <td>ID</td>
-                        <td>Name</td>
-                        <td>Actions</td>
-                        </thead>
-                        <tbody>
-                        @foreach($datas as $data)
-                            <tr>
-                                <td>{{ $data->id }}</td>
-                                <td>{{ $data->name }}</td>
-                                <td>
-                                    <div>
-                                        <div class="pull-left">
-                                            <form method="get" action="{{ url('master-category/edit/'.$data->id) }}">
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn edit-button">
-                                                    <i class="fa fa-edit edit-button"></i>
-                                                </button>
-                                            </form>
+                @if($datas->count() != 0)
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <td>ID</td>
+                            <td>Name</td>
+                            <td>Actions</td>
+                            </thead>
+                            <tbody>
+                            @foreach($datas as $data)
+                                <tr>
+                                    <td>{{ $data->id }}</td>
+                                    <td>{{ $data->name }}</td>
+                                    <td>
+                                        <div>
+                                            <div class="pull-left">
+                                                <form method="get" action="{{ url('master-category/edit/'.$data->id) }}">
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn edit-button">
+                                                        <i class="fa fa-edit edit-button"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            <div class="pull-left">
+                                                <form method="post" action="{{ url('master-category/delete/'.$data->id) }}">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('delete') }}
+                                                    <button type="submit" class="btn delete-button">
+                                                        <i class="fa fa-trash delete-button"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </div>
-                                        <div class="pull-left">
-                                            <form method="post" action="{{ url('master-category/delete/'.$data->id) }}">
-                                                {{ csrf_field() }}
-                                                {{ method_field('delete') }}
-                                                <button type="submit" class="btn delete-button">
-                                                    <i class="fa fa-trash delete-button"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    {{ $datas->links() }}
-                </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        {{ $datas->links() }}
+                    </div>
+                @else
+                    <p>No Data Available</p>
+                @endif
             </div>
         </div>
     </div>
