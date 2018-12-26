@@ -50,9 +50,7 @@
                                     <div class="media">
                                         <div class="media-body">
                                             <h4 class="title">
-                                                {{-- TBD LINK TO PROFILE --}}
-                                                <a href="{{ route('view-forum-thread', ['thread_id' => $thread->user->id]) }}">{{ $thread->user->name }}</a>
-                                                {{--=====================--}}
+                                                <a href="{{ route('profilePage', ['id' => $thread->user->id]) }}">{{ $thread->user->name }}</a>
                                                 <div>
                                                     <div class="pull-right">
                                                         <form method="post" action="{{ route('delete-forum-thread', ['id' => $thread->id]) }}">
