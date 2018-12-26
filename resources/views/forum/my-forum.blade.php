@@ -2,7 +2,7 @@
 @section('title', 'My Forum')
 @section('content')
     <div class="container">
-        @if($datas)
+        @if($datas->count() != 0)
             <div class="table-responsive">
                 <table class="table table-hover">
                     <tbody>
@@ -57,6 +57,7 @@
                     {{ $datas->links() }}
                 </div>
             </div>
+        @else <p>You have no forums at the moment</p>
         @endif
         @if(Auth::check())
             <footer>

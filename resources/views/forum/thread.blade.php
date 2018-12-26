@@ -51,6 +51,7 @@
                                         <div class="media-body">
                                             <h4 class="title">
                                                 <a href="{{ route('profilePage', ['id' => $thread->user->id]) }}">{{ $thread->user->name }}</a>
+                                                @if(Auth::user()->id == $thread->user->id)
                                                 <div>
                                                     <div class="pull-right">
                                                         <form method="post" action="{{ route('delete-forum-thread', ['id' => $thread->id]) }}">
@@ -72,6 +73,7 @@
                                                         </form>
                                                     </div>
                                                 </div>
+                                                @endif
                                             </h4>
                                             <p class="summary">{{ $thread->user->role->role->name }}</p>
                                             <p class="summary">Posted at: {{ $thread->forum->created_at }}</p>

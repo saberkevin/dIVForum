@@ -19,7 +19,7 @@
             @endif
         </div>
         <br>
-        @if($datas)
+        @if($datas->count() != 0)
         <div class="table-responsive">
             <table class="table table-hover">
                 <tbody>
@@ -51,6 +51,7 @@
                 {{ $datas->links() }}
             </div>
         </div>
+        @else <p>There are no forums at the moment</p>
         @endif
         @if(Auth::check())
             <footer>
