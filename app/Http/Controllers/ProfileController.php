@@ -17,6 +17,11 @@ class ProfileController extends Controller
 
         $data = User::find($id);
         $routeName = Route::currentRouteName();
+        if(!$data)
+        {
+            return back();
+        }
+
         return view('profile-page/profile-page', compact('data', 'routeName', 'id'));
     }
 

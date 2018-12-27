@@ -24,7 +24,6 @@
                                 <td>Actions</td>
                                 </thead>
                                 <tbody>
-                                @if(count($datas) > 0)
                                 @foreach($datas as $data)
                                     <tr>
                                         <td><img src="profile_picture/{{$data->profile_picture}}" alt="" class="imgData"></td>
@@ -58,8 +57,6 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                                @else @php Auth::logout(); @endphp
-                                @endif
                                 </tbody>
                             </table>
                             {{ $datas->links() }}
