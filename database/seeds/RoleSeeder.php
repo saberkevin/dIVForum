@@ -12,11 +12,15 @@ class RoleSeeder extends Seeder
     public function run()
     {
         DB::table('mtr_roles')->insert([
-            'name' => 'Admin'
+            'name' => 'Admin',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' =>  \Carbon\Carbon::now()
         ]);
 
         DB::table('mtr_roles')->insert([
-            'name' => 'Member'
+            'name' => 'Member',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' =>  \Carbon\Carbon::now()
         ]);
     }
 }

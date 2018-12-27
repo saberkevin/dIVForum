@@ -19,18 +19,24 @@ class UserSeeder extends Seeder
             'gender' => 'Male',
             'address' => 'Some Randomly Picked Address From Google Maps Street',
             'profile_picture' => '12272018158-admin.png',
-            'birthday' => '1945-08-17'
+            'birthday' => '1945-08-17',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' =>  \Carbon\Carbon::now()
         ]);
 
         DB::table('trn_user_roles')->insert([
             'user_id' => 1,
-            'role_id' => 1
+            'role_id' => 1,
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' =>  \Carbon\Carbon::now()
         ]);
 
         DB::table('trn_popularities')->insert([
             'user_id' => 1,
             'positive' => 999,
             'negative' => 0,
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' =>  \Carbon\Carbon::now()
         ]);
     }
 }

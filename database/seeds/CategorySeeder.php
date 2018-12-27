@@ -12,7 +12,9 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('mtr_categories')->insert([
-            'name' => 'General'
+            'name' => 'General',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' =>  \Carbon\Carbon::now()
         ]);
     }
 }
