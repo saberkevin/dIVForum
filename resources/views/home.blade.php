@@ -29,7 +29,11 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="title">
-                                        <a href="{{ route('view-forum-thread', ['id' => $data->id]) }}">{{ $data->forum->name }}</a>
+                                        @if(Auth::check())
+                                            <a href="{{ route('view-forum-thread', ['id' => $data->id]) }}">{{ $data->forum->name }}</a>
+                                        @else
+                                            {{ $data->forum->name }}
+                                        @endif
                                         @if($data->forum->status == 'open')
                                             <span class="forum-open pull-right">Open</span>
                                         @elseif($data->forum->status == 'closed')
