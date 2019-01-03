@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class InboxController extends Controller
 {
-   public function inboxPage($id)
+   public function inboxPage()
    {
-       $datas = Inbox::where('user_id', '=', $id)->paginate(10);
+       $datas = Inbox::where('user_id', '=', Auth::user()->id)->paginate(10);
        return view('profile-page/inbox-page', compact('datas'));
    }
 

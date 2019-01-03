@@ -74,7 +74,7 @@ Route::middleware(['checkUserLogin'])->group(function () {
 });
 
 //INBOX PAGE
-Route::middleware(['checkUserLogin','checkOwnInbox'])->group(function () {
-    Route::get('/inbox-page/{id}', 'InboxController@inboxPage')->name('inboxPage');
+Route::middleware(['checkUserLogin'])->group(function () {
+    Route::get('/inbox-page', 'InboxController@inboxPage')->name('inboxPage');
     Route::delete('/inbox-page/delete/{id}', 'InboxController@deleteMessage')->name('deleteMessage');
 });
